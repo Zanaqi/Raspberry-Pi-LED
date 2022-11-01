@@ -15,7 +15,7 @@ const int red_led = 0;	 // global variable red_led set to 0 as red LED is connec
 
 void turn_off_both()
 {
-	digitalWrite(red_led, LOW); // set value of red_led pin to LOW to turn off red LED
+	digitalWrite(red_led, LOW); 	// set value of red_led pin to LOW to turn off red LED
 	pwmWrite(green_led, 0);		// set PWM value of green_led pin to 0 to turn off green LED
 }
 
@@ -23,8 +23,8 @@ void turn_off_both()
 
 void turn_on_both()
 {
-	digitalWrite(red_led, HIGH); // set value of red_led pin to HIGH to turn on red LED
-	pwmWrite(green_led, 1024);	 // set PWM value of green_led pin to 1024 to turn on green LED at 100% duty cycle
+	digitalWrite(red_led, HIGH); 	// set value of red_led pin to HIGH to turn on red LED
+	pwmWrite(green_led, 1024);	// set PWM value of green_led pin to 1024 to turn on green LED at 100% duty cycle
 }
 
 /*                       User input 2, blink green and red LEDs two times per second                        */
@@ -37,11 +37,11 @@ void blink()
 	for (int i = 0; i < 8; i++) // to blink 4 seconds, total number of cycles = 4000ms / 500ms = 8 cycles
 	{
 		digitalWrite(red_led, HIGH); // set value of red_led pin to HIGH to turn on red LED
-		pwmWrite(green_led, 512);	 // set PWM value of green_led pin to 512 to turn on green LED at 50% duty cycle
-		delay(250);					 // delay for 250ms
-		digitalWrite(red_led, LOW);	 // set value of red_led pin to LOW to turn off red LED
-		pwmWrite(green_led, 0);		 // set PWM value of green_led pin to 0 to turn off green LED
-		delay(250);					 // delay for 250ms
+		pwmWrite(green_led, 512);	// set PWM value of green_led pin to 512 to turn on green LED at 50% duty cycle
+		delay(250);			// delay for 250ms
+		digitalWrite(red_led, LOW);	// set value of red_led pin to LOW to turn off red LED
+		pwmWrite(green_led, 0);		// set PWM value of green_led pin to 0 to turn off green LED
+		delay(250);			// delay for 250ms
 	}
 }
 
@@ -63,22 +63,22 @@ void special()
 
 		duty_cycle = 640 - ((i % 4) + 1) * 128;
 
-		pwmWrite(green_led, duty_cycle); // set PWM value to duty_cycle variable based on the loop iteration
-		for (k = 0; k < 2; k++)			 // delay for green LED is 250ms, period of red LED cycle is 125ms, loop through red LED cycle for 250ms/125ms = 2 cycles before turning green LED off
+		pwmWrite(green_led, duty_cycle); 	// set PWM value to duty_cycle variable based on the loop iteration
+		for (k = 0; k < 2; k++)			// delay for green LED is 250ms, period of red LED cycle is 125ms, loop through red LED cycle for 250ms/125ms = 2 cycles before turning green LED off
 		{
-			digitalWrite(red_led, HIGH); // set value of red_led pin to HIGH to turn on red LED
-			delay(62.5);				 // delay for 62.5ms
-			digitalWrite(red_led, LOW);	 // set value of red_led pin to LOW to turn off red LED
-			delay(62.5);				 // delay for 62.5ms
+			digitalWrite(red_led, HIGH); 	// set value of red_led pin to HIGH to turn on red LED
+			delay(62.5);			// delay for 62.5ms
+			digitalWrite(red_led, LOW);	// set value of red_led pin to LOW to turn off red LED
+			delay(62.5);			// delay for 62.5ms
 		}
 
 		pwmWrite(green_led, 0); // set PWM value of green_led pin to 0 to turn off green LED
 		for (k = 0; k < 2; k++) // loop for another two cycles of red LED to get 250ms of delay before turning green LED back on
 		{
-			digitalWrite(red_led, HIGH); // set value of red_led pin to HIGH to turn on red LED
-			delay(62.5);				 // delay for 62.5ms
-			digitalWrite(red_led, LOW);	 // set value of red_led pin to LOW to turn off red LED
-			delay(62.5);				 // delay for 62.5ms
+			digitalWrite(red_led, HIGH); 	// set value of red_led pin to HIGH to turn on red LED
+			delay(62.5);			// delay for 62.5ms
+			digitalWrite(red_led, LOW);	// set value of red_led pin to LOW to turn off red LED
+			delay(62.5);			// delay for 62.5ms
 		}
 	}
 }
@@ -86,10 +86,10 @@ void special()
 /* Main function */
 int main()
 {
-	int userInput = 1;				// variable to store user input
-	int end_demo = 0;				// end_demo = 1 to exit while loop and end program
-	wiringPiSetup();				// initialises wiringPi to use wiringPi pin numbering scheme (ie red LED = 0, green LED = 1)
-	pinMode(green_led, PWM_OUTPUT); // set green LED wiring pin to PWM_OUTPUT
+	int userInput = 1;			// variable to store user input
+	int end_demo = 0;			// end_demo = 1 to exit while loop and end program
+	wiringPiSetup();			// initialises wiringPi to use wiringPi pin numbering scheme (ie red LED = 0, green LED = 1)
+	pinMode(green_led, PWM_OUTPUT); 	// set green LED wiring pin to PWM_OUTPUT
 	pinMode(red_led, OUTPUT);		// set red LED wiring pin to OUTPUT
 
 	while (end_demo == 0)
