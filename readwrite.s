@@ -36,7 +36,7 @@ main:
 	ldr r1, =0x21000       	@load address 0x21000 into r1
 	ldr r1, [r1]           	@load value stored in 0x21000 into r1
 	ldr r0, =final_msg     	@load final message into r0
-	bl printf	       		@printf
+	bl printf	       	@printf
 
 	mov r0, #0             	@exit code
 	mov r7, #1
