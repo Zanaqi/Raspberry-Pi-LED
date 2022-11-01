@@ -5,7 +5,7 @@
 	format:       .asciz "%d"                                   @scanf format
 	output_msg:   .asciz "You entered: %d\n"                    @print out user number after input
 	moving_msg:   .asciz "Moving data to RAM address 0x21000\n" @msg to let user know RAM address location
-	final_msg:    .asciz "Data in address 0x21000: %d\n"        @print data stored in 0x21030 to check
+	final_msg:    .asciz "Data in address 0x21000: %d\n"        @print data stored in 0x2100 to check
 .text
 	.global main
 	.extern scanf
