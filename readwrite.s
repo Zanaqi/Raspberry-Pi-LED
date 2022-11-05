@@ -67,7 +67,7 @@ main:
 	LDR R2, [R1]          		@; load value stored in target address into r2
 	BL printf	      		@; printf
 
-	POP {ip, lr}               	@; exit code
+	POP {ip, pc}               	@; exit code
 
 
 @; addresses needed to access data
