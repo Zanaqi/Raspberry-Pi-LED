@@ -37,7 +37,7 @@
 	.extern printf			@; external function prinf to print messages in terminal
 
 main:
-	PUSH {ip, lr}
+	PUSH {ip, lr}			@; Store return address, i.e., link reg. (lr), and ip (intra procedural call) register in Stack
 	LDR R0, addr_of_prompt 		@; load address of prompt msg in r0
 	BL printf             		@; print msg
 
@@ -67,7 +67,7 @@ main:
 	LDR R2, [R1]          		@; load value stored in target address into r2
 	BL printf	      		@; printf
 
-	POP {ip, pc}               	@; exit code
+	POP {ip, pc}               	@; Pop ip reg., and pop lr (link reg.) value to PC, return
 
 
 @; addresses needed to access data
