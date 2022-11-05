@@ -31,10 +31,10 @@
 
 @; text section
 .text
-	.balign 4 				@; ensure function starts 4-byte aligned
-	.global main 				@; entry of the program
-	.extern scanf  				@; external function scanf to take in user input
-	.extern printf				@; external function prinf to print messages in terminal
+	.balign 4 			@; ensure function starts 4-byte aligned
+	.global main 			@; entry of the program
+	.extern scanf  			@; external function scanf to take in user input
+	.extern printf			@; external function prinf to print messages in terminal
 
 main:
 	PUSH {ip, lr}
