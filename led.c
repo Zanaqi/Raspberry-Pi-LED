@@ -1,5 +1,6 @@
 #include <wiringPi.h> // library to access GPIO
 #include <stdio.h>
+#include <stdlib.h>
 
 /******************************************************
  green LED - GPIO 18 / physical pin 12 / wiring pin 1
@@ -56,8 +57,8 @@ void blink()
 void special()
 {
 	int k = 0;
-	float duty_cycle = 0.0;		// variable to change PWM value for green LED
-	for (int i = 0; i < 8; i++) // to blink 4 seconds, total number of cycles = 4000ms / 500ms = 8 cycles
+	int duty_cycle = 0;		// variable to change PWM value for green LED
+	for (int i = 0; i < 8; i++) 	// to blink 4 seconds, total number of cycles = 4000ms / 500ms = 8 cycles
 	{
 		/*Duty cycle pattern - 50% -> 37.5% -> 25% -> 12.5% and repeat*/
 
@@ -88,9 +89,14 @@ int main()
 {
 	int userInput = 1;			// variable to store user input
 	int end_demo = 0;			// end_demo = 1 to exit while loop and end program
-	wiringPiSetup();			// initialises wiringPi to use wiringPi pin numbering scheme (ie red LED = 0, green LED = 1)
-	pinMode(green_led, PWM_OUTPUT); 	// set green LED wiring pin to PWM_OUTPUT
-	pinMode(red_led, OUTPUT);		// set red LED wiring pin to OUTPUT
+	
+	if (wiringPiSetup() != 0);		// initialises wiringPi to use wiringPi pin numbering scheme (ie red LED = 0, green LED = 1)
+	{	
+		printf("Error in GPIO initialisation, exiting program\n"); // wiringPiSetup returns '0' for successful initialisation, exit if not success
+		exit(1);
+	}
+	pinMode(green_led, PWM_OUTPUT); 	// initialise green LED wiring pin to PWM_OUTPUT
+	pinMode(red_led, OUTPUT);		// initialise red LED wiring pin to OUTPUT
 
 	while (end_demo == 0)
 	{
