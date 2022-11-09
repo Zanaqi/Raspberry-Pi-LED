@@ -37,7 +37,7 @@ void blink()
 {
 	for (int i = 0; i < 8; i++) // to blink 4 seconds, total number of cycles = 4000ms / 500ms = 8 cycles
 	{
-		digitalWrite(red_led, HIGH); // set value of red_led pin to HIGH to turn on red LED
+		digitalWrite(red_led, HIGH); 	// set value of red_led pin to HIGH to turn on red LED
 		pwmWrite(green_led, 512);	// set PWM value of green_led pin to 512 to turn on green LED at 50% duty cycle
 		delay(250);			// delay for 250ms
 		digitalWrite(red_led, LOW);	// set value of red_led pin to LOW to turn off red LED
@@ -87,16 +87,16 @@ void special()
 /* Main function */
 int main()
 {
-	int userInput = 1;			// variable to store user input
-	int end_demo = 0;			// end_demo = 1 to exit while loop and end program
+	int userInput = 1;							// variable to store user input
+	int end_demo = 0;							// end_demo = 1 to exit while loop and end program
 	
-	if (wiringPiSetup() != 0);		// initialises wiringPi to use wiringPi pin numbering scheme (ie red LED = 0, green LED = 1)
+	if (wiringPiSetup() != 0);						// initialises wiringPi to use wiringPi pin numbering scheme (ie red LED = 0, green LED = 1)
 	{	
-		printf("Error in GPIO initialisation, exiting program\n"); // wiringPiSetup returns '0' for successful initialisation, exit if not success
+		printf("Error in GPIO initialisation, exiting program\n");	// wiringPiSetup returns '0' for successful initialisation, exit if not success
 		exit(1);
 	}
-	pinMode(green_led, PWM_OUTPUT); 	// initialise green LED wiring pin to PWM_OUTPUT
-	pinMode(red_led, OUTPUT);		// initialise red LED wiring pin to OUTPUT
+	pinMode(green_led, PWM_OUTPUT); 					// initialise green LED wiring pin to PWM_OUTPUT
+	pinMode(red_led, OUTPUT);						// initialise red LED wiring pin to OUTPUT
 
 	while (end_demo == 0)
 	{
@@ -108,9 +108,9 @@ int main()
 		printf("3 - Blink red LED 8 times per second and blink green LED 2 times per second with reduced brightness\n");
 		printf("4 - Exit\n");
 
-		scanf("%d", &userInput); // get user input and store in userInput variable
+		scanf("%d", &userInput);	// get user input and store in userInput variable
 
-		switch (userInput) // switch case to different functions based on user's input
+		switch (userInput) 		// switch case to different functions based on user's input
 		{
 		case 0:
 			turn_off_both();
@@ -125,7 +125,7 @@ int main()
 			special();
 			break;
 		case 4:
-			end_demo++; // If user input = 4, exit the program by incrementing end_demo variable by 1 to exit while loop
+			end_demo++;		// If user input = 4, exit the program by incrementing end_demo variable by 1 to exit while loop
 			break;
 		default:
 			printf("Invalid input!\n");
