@@ -63,7 +63,7 @@ main:
 
 	LDR R0, addr_of_final_msg	@; load addres of final message into r0
 	LDR R1, addr_of_target     	@; load address of target address value into r1
-	LDR R1, [R1]          		@; load address value stored into r2
+	LDR R1, [R1]          		@; load address value into r1
 	LDR R2, [R1]          		@; load value stored in target address into r2
 	BL printf	      		@; printf
 
